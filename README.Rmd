@@ -75,7 +75,22 @@ rarecurve(cm)
 ## Modelos de abundancia de especie
 
 ```{r}
+fisher <- fisherfit(colSums(cm))
+fisher
+plot (fisher)
+preston <- prestonfit(colSums(cm))
+preston
+plot(preston)
+```
 
+## Modelos de rango-abundancia
+
+```{r}
+mra <- radfit(cm)
+mra
+plot(mra)
+mrapooled <- radfit(colSums(cm))
+plot(mrapooled)
 ```
 
 
@@ -84,13 +99,17 @@ rarecurve(cm)
 ### Modelos de acumulación de especies
 
 ```{r}
-
+acumesp <- specaccum(cm)
+plot(acumesp, ci.type="polygon", ci.col="yellow")
 ```
 
 ### Diversidad *beta*
 
 ```{r}
-
+betadiver(help=T)
+betadiver(cm,method = 10)
+betad <- betadiver(cm,method = 10)
+summary(betad)
 ```
 
 
